@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 
+# Blog name
+BLOG_NAME = "Django Blog"
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -160,5 +163,5 @@ MDEDITOR_CONFIGS = {
 }
 
 # enabling media uploads
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
 MEDIA_URL = '/media/'
