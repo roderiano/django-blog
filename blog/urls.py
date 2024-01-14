@@ -20,13 +20,13 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import re_path as url
-from post.views import blog_preview
-from django.views.generic.base import TemplateView
+from post.views import blog_preview, post_detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'mdeditor/', include('mdeditor.urls')),
     url(r'^$', blog_preview, name='blog_preview'),
+    path('post/<int:post_id>/', post_detail, name='post_detail'),
 ]
 
 if settings.DEBUG:

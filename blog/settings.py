@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'post',
     'mdeditor',
+    'markdownify.apps.MarkdownifyConfig',
 ]
 
 MIDDLEWARE = [
@@ -155,7 +156,7 @@ MDEDITOR_CONFIGS = {
         'tex': True,  # whether to open the tex chart function
         'flow_chart': True,  # whether to open the flow chart function
         'sequence': True,  # Whether to open the sequence diagram function
-        'watch': True,  # Live preview
+        'watch': False,  # Live preview
         'lineWrapping': True,  # lineWrapping
         'lineNumbers': True,  # lineNumbers
         'language': 'en'  # zh / en / es
@@ -165,3 +166,52 @@ MDEDITOR_CONFIGS = {
 # enabling media uploads
 MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
 MEDIA_URL = '/media/'
+
+MARKDOWNIFY = {
+    "default": {
+        "MARKDOWN_EXTENSIONS": [
+            'markdown.extensions.fenced_code',
+            'markdown.extensions.extra',
+            'markdown.extensions.codehilite',
+        ],
+        "WHITELIST_STYLES": [
+            'color',
+            'font-weight',
+        ],
+        "WHITELIST_TAGS": [
+            'code',
+            'pre',
+            'span',
+            'div',
+            'a',
+            'abbr',
+            'acronym',
+            'b',
+            'blockquote',
+            'em',
+            'i',
+            'li',
+            'ol',
+            'p',
+            'strong',
+            'ul',
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'img',
+        ],
+        "WHITELIST_ATTRS": [
+            'class',
+            'href',
+            'src',
+            'alt',
+            ],
+        "WHITELIST_PROTOCOL": [
+            'http',
+            'https',
+        ],
+        "BLEACH": True
+    }
+}

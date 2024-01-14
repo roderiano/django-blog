@@ -1,6 +1,18 @@
-<!-- post/templates/post/blog_preview.html -->
+{% load markdownify %}
+
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+	.codehilite {
+		box-sizing: border-box;
+		margin: 0 auto;
+		padding: 10px;
+        background-color: rgb(241, 241, 241);
+        border-radius: 3px;
+	}
+
+</style>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,26 +37,24 @@
             </form>
         </div>
     </nav>
-    
+
     <!-- Conteúdo Principal -->
     <main>
         <div class="container mt-5">
-            <h1 class="mb-4">Recent Posts</h1>
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="./../../">home</a></li>
+                  <li class="breadcrumb-item" aria-current="page"><a href="#">{{ post.title }}</a></li>
+                </ol>
+            </nav>
 
-            {% for post in posts %}
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h2 class="card-title">{{ post.title }}</h2>
-                        <p class="card-text"><small class="text-muted">Published by {{ post.author.username }} on {{ post.pub_date }}</small></p>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">{{ post.content_preview | safe }}</p>
-                        <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read More</a>
-                    </div>
-                </div>
-            {% endfor %}
+            <h1>{{ post.title }}</h1>
+            <p>Published by {{ post.author.username }} on {{ post.pub_date }}</p>
+            
+            <div>{{ post.content | markdownify }}</div>
         </div>
     </main>
 
 </body>
 </html>
+
