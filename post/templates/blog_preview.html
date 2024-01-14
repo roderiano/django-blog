@@ -34,8 +34,16 @@
             {% for post in posts %}
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h2 class="card-title">{{ post.title }}</h2>
-                        <p class="card-text"><small class="text-muted">Published by {{ post.author.username }} on {{ post.pub_date }}</small></p>
+                        <h2 class="card-title">{{ post.title }} </h2>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Tag: <span class="badge text-bg-primary">{{ post.tag.name }}</span>
+                            </small>
+                            <br>
+                            <small class="text-muted">
+                                Published by {{ post.author.username }} on {{ post.pub_date }}
+                            </small>
+                        </p>
                     </div>
                     <div class="card-body">
                         <p class="card-text">{{ post.content_preview | safe }}</p>

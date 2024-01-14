@@ -2,6 +2,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from mdeditor.fields import MDTextField
+from tag.models import Tag
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
@@ -9,6 +10,7 @@ class Post(models.Model):
     content_preview = models.TextField(null=True, blank=True)
     pub_date = models.DateTimeField('date published')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=False)
 
     def __str__(self):
         return self.title
