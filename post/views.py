@@ -5,12 +5,18 @@ import markdown
 
 from django.shortcuts import render
 from .models import Post
+from tag.models import Tag
 
-def blog_preview(request):
+def post_list(request):
     posts = Post.objects.all()
-    return render(request, 'blog_preview.html', {'posts': posts})
+    tags = Tag.objects.all()
+    return render(request, 'post_list.html', {'posts': posts, 'tags': tags})
 
 def post_detail(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
+    tags = Tag.objects.all()
 
-    return render(request, 'post_detail.html', {'post': post})
+    return render(request, 'post_detail.html', {'post': post, 'tags': tags})
+
+def blog_index(request):
+    return render(request, 'blog_index.html')
