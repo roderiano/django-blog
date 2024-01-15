@@ -22,41 +22,48 @@ This is a minimalistic blog built using Django Admin for content management and 
 
 1. Clone the repository:
 
-    ```bash
+    ```
     git clone https://github.com/roderiano/django-blog.git
     ```
 
-2. Install dependencies:
+2. Create and activate a virtual environment:
 
-    ```bash
+    ```
+    python -m venv venv
+    ```
+
+3. Install dependencies:
+
+    ```
     pip install -r requirements.txt
     ```
 
-3. Apply migrations:
+4. Apply migrations:
 
-    ```bash
+    ```
     python manage.py migrate
     ```
 
-4. Create a superuser for accessing the Django Admin:
+5. Create a superuser for accessing the Django Admin:
 
-    ```bash
+    ```
     python manage.py createsuperuser
     ```
 
-5. Run the development server:
+6. Run the development server:
 
-    ```bash
+    ```
     python manage.py runserver
     ```
 
-6. Open your browser and navigate to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) to log in and start managing your blog content.
+7. Open your browser and navigate to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) to log in and start managing your blog content.
+
 
 ### Running Tests
 
 To run the tests, use the following command:
 
-```bash
+```
 python manage.py test
 ```
 
