@@ -13,16 +13,15 @@
             crossorigin="anonymous"></script>
     </head>
     <body>
-
         <!-- navbar -->
-        <nav style="padding-bottom: 0;" class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="{{ MEDIA_URL }}/media/django-blog.png" alt="Bootstrap" width="120" height="28">
                 </a>
                 <div class="collapse navbar-collapse" id="navbarScroll"></div>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex" method="GET" action="{% url 'post_list' %}">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ search_query }}">
                         <button class="btn btn-secondary" type="submit">Search</button>
                     </form>
                 </div>
