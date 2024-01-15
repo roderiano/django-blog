@@ -19,12 +19,12 @@
     <!-- navbar -->
     <nav style="padding-bottom: 0;" class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="{{ MEDIA_URL }}/media/django-blog.png" alt="Bootstrap" width="120" height="28">
             </a>
             <div class="collapse navbar-collapse" id="navbarScroll"></div>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" method="GET" action="{% url 'post_list' %}">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ search_query }}">
                     <button class="btn btn-secondary" type="submit">Search</button>
                 </form>
             </div>
@@ -36,10 +36,14 @@
             <div class="col-md-3">
                 <aside class="sidebar">
                     <h3 class="mb-4">Post Tags</h3>
-
                     <div class="list-group">
                         {% for tag in tags %}
-                            <a href="#" class="list-group-item list-group-item-action">{{ tag.name }}</a>
+                            <a href="/posts/?q={{ tag.name }}" class="list-group-item list-group-item-action">
+                                {{ tag.name }}
+                                <span class="badge rounded-pill bg-secondary">
+                                    {{ tag.post_amount }}
+                                </span>
+                            </a>
                         {% endfor %}
                     </div>
                 </aside>
@@ -47,28 +51,36 @@
 
             <!-- Main Content -->
             <div class="col-md-9">
-                <h3 class="mb-4">Recent Posts</h3>
+                {% if search_query %}
+                    <h3 class="mb-4">Search Results: "{{ search_query }}"</h2>
+                {% else %}
+                    <h3 class="mb-4">Recent Posts</h3>
+                {% endif %}
 
-                {% for post in posts %}
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h3 class="card-title">{{ post.title }} </h3>
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    Tag: <span class="badge bg-primary">{{ post.tag.name }}</span>
-                                </small>
-                                <br>
-                                <small class="text-muted">
-                                    Published by {{ post.author.username }} on {{ post.pub_date }}
-                                </small>
-                            </p>
+                {% if posts %}
+                    {% for post in posts %}
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h3 class="card-title">{{ post.title }} </h3>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        Tag: <span class="badge bg-primary">{{ post.tag.name }}</span>
+                                    </small>
+                                    <br>
+                                    <small class="text-muted">
+                                        Published by {{ post.author.username }} on {{ post.pub_date }}
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{ post.content_preview | safe }}</p>
+                                <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read More</a>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <p class="card-text">{{ post.content_preview | safe }}</p>
-                            <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read More</a>
-                        </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <h5 class="mb-4">No results</h5>
+                {% endif %}
             </div>
         </div>
     </main>

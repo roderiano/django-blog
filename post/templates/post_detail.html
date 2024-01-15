@@ -55,15 +55,33 @@
         <div class="container mt-5">
             <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="./../../">home</a></li>
-                  <li class="breadcrumb-item" aria-current="page"><a href="#">{{ post.title }}</a></li>
+                    <li class="breadcrumb-item"><a href="./../../">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <a href="/posts/?q={{ post.tag.name }}">
+                            {{ post.tag.name }}
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ post.title }}</li>
                 </ol>
             </nav>
 
-            <h1>{{ post.title }}</h1>
-            <p>Published by {{ post.author.username }} on {{ post.pub_date }}</p>
-            
-            <div>{{ post.content | markdownify }}</div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h1 class="card-title">{{ post.title }} </h1>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            Tag: <span class="badge bg-primary">{{ post.tag.name }}</span>
+                        </small>
+                        <br>
+                        <small class="text-muted">
+                            Published by {{ post.author.username }} on {{ post.pub_date }}
+                        </small>
+                    </p>
+                </div>
+                <div class="card-body">
+                    <div>{{ post.content | markdownify }}</div>
+                </div>
+            </div>
         </div>
     </main>
 
