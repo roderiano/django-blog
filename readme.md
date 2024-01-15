@@ -10,6 +10,10 @@ This is a minimalistic blog built using Django Admin for content management and 
 - Bootstrap for a clean and responsive design.
 - Simple and lightweight structure for easy customization.
 
+<p align="center">
+  <img src="blog/media/preview.gif" alt="Django Blog Preview">
+</p>
+
 ## Getting Started
 
 ### Prerequisites
