@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-ie8%(j3w8qyxv993=+l%7ty0e+m62mt^eyxi87e($1lzp+1^qk
 DEBUG = True
 
 ALLOWED_HOSTS = ['matt2.enterprisegradesecurity.com', 'mattkingsbury.com', 'www.mattkingsbury.com', 'localhost', 'https://matt2.enterprisegradesecurity.com']
-
+CSRF_TRUSTED_ORIGINS = ['matt2.enterprisegradesecurity.com', 'mattkingsbury.com', 'www.mattkingsbury.com', 'localhost', 'https://matt2.enterprisegradesecurity.com']
 # Application definition
 
 INSTALLED_APPS = [
