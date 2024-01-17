@@ -6,7 +6,6 @@
     <!-- Breadcrumb and Main Content -->
     <nav style="--bs-breadcrumb-divider: '>';">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">
                 <a href="{% url 'post_list' %}?q={{ post.tag.name }}">{{ post.tag.name }}</a>
             </li>
