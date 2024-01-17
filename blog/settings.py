@@ -26,10 +26,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ie8%(j3w8qyxv993=+l%7ty0e+m62mt^eyxi87e($1lzp+1^qk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['http://example.com', 'https://example.com']
-CSRF_TRUSTED_ORIGINS = ['http://example.com', 'https://example.com']
+# Set the environment variables
+# You can either set these here or set the environment variables such as:
+# export ALLOWED_HOSTS=http://example.com,https://example.com,localhost
+
+# ALLOWED_HOSTS = ['http://example.com', 'https://example.com', 'localhost']
+# CSRF_TRUSTED_ORIGINS = ['http://example.com', 'https://example.com']
+
+hosts = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+
+# Note, this assumes that the CSRF and ALLOWED hosts are the same!
+ALLOWED_HOSTS = hosts
+CSRF_TRUSTED_ORIGINS = hosts
+
 # Application definition
 
 INSTALLED_APPS = [
