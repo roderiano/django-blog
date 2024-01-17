@@ -120,6 +120,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # If you have a 'static' folder at the project level
+    os.path.join(BASE_DIR, 'static-extensions')
+]
+
+# enabling media uploads
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -159,9 +167,7 @@ MDEDITOR_CONFIGS = {
     }
 }
 
-# enabling media uploads
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
-MEDIA_URL = '/media/'
+
 
 MARKDOWNIFY = {
     "default": {
