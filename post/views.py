@@ -5,7 +5,7 @@ from .models import Post, Tag, TextAsset
 
 
 def post_list(request):
-    posts = Post.objects.all().order_by('-pub_date')
+    posts = Post.objects.filter(is_index_post=False).order_by('-pub_date')
     tags = Tag.objects.all()
     search_query = request.GET.get('q', '')
 
