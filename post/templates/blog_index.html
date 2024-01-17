@@ -28,16 +28,25 @@
     </div>
 </nav>
 <main class="container mt-5">
-    <div class="jumbotron">
-        <h1 class="display-4">Hello, world!</h1>
-        <p class="lead">This is a minimalist blog based on django admin with bootstrap.</p>
-        <hr class="my-4">
-        <p>
-            You can access the admin panel by clicking <a href="/admin">here</a>. Or click the explore button to view
-            the posts.
-        </p>
-        <a class="btn btn-primary btn-md" href="/posts" role="button">Explore</a>
-    </div>
+    {% if special_post %}
+        <!-- Display the special post -->
+        <h1>{{ special_post.title }}</h1>
+        <div>{{ special_post.content|safe }}</div>
+        <!-- Add more fields as necessary -->
+    {% else %}
+        <!-- Default content -->
+        <div class="jumbotron">
+            <h1 class="display-4">Hello, world!</h1>
+            <p class="lead">This is a minimalist blog based on django admin with bootstrap.</p>
+            <hr class="my-4">
+            <p>
+                You can access the admin panel by clicking <a href="/admin">here</a>. Or click the explore button to
+                view
+                the posts.
+            </p>
+            <a class="btn btn-primary btn-md" href="/posts" role="button">Explore</a>
+        </div>
+    {% endif %}
 </main>
 
 <footer style="position: fixed; bottom: 0; width: 100%;" class="bg-body-tertiary text-center text-lg-start">

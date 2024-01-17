@@ -19,4 +19,9 @@ def post_detail(request, post_id):
     return render(request, 'post_detail.html', {'post': post, 'tags': tags})
 
 def blog_index(request):
-    return render(request, 'blog_index.html')
+    try:
+        special_post = Post.objects.get(is_index_post=True)
+    except Post.DoesNotExist:
+        special_post = None
+    context = {'special_post': special_post}
+    return render(request, 'blog_index.html', context)

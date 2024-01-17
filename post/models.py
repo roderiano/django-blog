@@ -10,6 +10,7 @@ class Post(models.Model):
     content_preview = models.TextField(null=True, blank=True)
     pub_date = models.DateTimeField('date published')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    is_index_post = models.BooleanField(default=False)
     tag = models.ForeignKey(Tag, on_delete=models.SET_NULL, null=True, blank=False)
 
     def __str__(self):
