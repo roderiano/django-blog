@@ -7,7 +7,7 @@
 {% block content %}
     {% if special_post %}
         <h1>{{ special_post.title }}</h1>
-        <div>{{ special_post.content|safe }}</div>
+        <div>{{ special_post.content|safe|markdownify }}</div>
     {% else %}
         <div class="jumbotron">
             <h1 class="display-4">Hello, world!</h1>
