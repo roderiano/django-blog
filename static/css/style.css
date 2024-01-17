@@ -1,0 +1,16 @@
+/* static/css/style.css */
+code {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 3px;
+}
+
+.codehilite {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: rgb(241, 241, 241);
+    border-radius: 3px;
+}
