@@ -26,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ie8%(j3w8qyxv993=+l%7ty0e+m62mt^eyxi87e($1lzp+1^qk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['matt2.enterprisegradesecurity.com', 'mattkingsbury.com', 'www.mattkingsbury.com', 'localhost', 'https://matt2.enterprisegradesecurity.com']
-CSRF_TRUSTED_ORIGINS = ['matt2.enterprisegradesecurity.com', 'mattkingsbury.com', 'www.mattkingsbury.com', 'localhost', 'https://matt2.enterprisegradesecurity.com']
+ALLOWED_HOSTS = ['example.com', 'https://example.com']
+CSRF_TRUSTED_ORIGINS = ['example.com', 'https://example.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -216,4 +216,3 @@ MARKDOWNIFY = {
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SECURE_SSL_REDIRECT = True
