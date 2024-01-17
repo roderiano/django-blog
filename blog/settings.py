@@ -39,7 +39,7 @@ hosts = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 # Note, this assumes that the CSRF and ALLOWED hosts are the same!
 ALLOWED_HOSTS = hosts
-CSRF_TRUSTED_ORIGINS = hosts
+CSRF_TRUSTED_ORIGINS = ['http://' + host for host in hosts] + ['https://' + host for host in hosts]
 
 # Application definition
 
