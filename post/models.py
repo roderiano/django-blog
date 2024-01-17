@@ -1,8 +1,10 @@
 # post/models.py
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 from mdeditor.fields import MDTextField
+
 from tag.models import Tag
+
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
@@ -15,3 +17,18 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class TextAsset(models.Model):
+    ASSET_TYPES = (
+        ('logo', 'Logo'),
+        ('copyright', 'Copyright'),
+        ('about', 'About'),
+        ('contact', 'Contact')
+    )
+    asset_type = models.CharField(max_length=50, choices=ASSET_TYPES)
+    content = models.TextField()
+
+
+def __str__(self):
+    return f"{self.get_asset_type_display()}: {self.content[:50]}"
