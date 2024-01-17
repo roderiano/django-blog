@@ -14,7 +14,7 @@
             crossorigin="anonymous"></script>
 
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
-    
+
 
 </head>
 <body>
@@ -50,7 +50,6 @@
 <!-- Footer -->
 <footer style="position: fixed; bottom: 0; width: 100%;" class="bg-body-tertiary text-center text-lg-start">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2023 Copyright -
-        <a class="text-body" href="https://mdbootstrap.com/">Gabriel Silveira</a>
+        {{ copyright_text|safe }}
     </div>
 </footer>
