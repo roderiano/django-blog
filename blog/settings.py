@@ -28,8 +28,19 @@ SECRET_KEY = 'django-insecure-ie8%(j3w8qyxv993=+l%7ty0e+m62mt^eyxi87e($1lzp+1^qk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['example.com', 'https://example.com']
-CSRF_TRUSTED_ORIGINS = ['example.com', 'https://example.com']
+# Set the environment variables
+# You can either set these here or set the environment variables such as:
+# export ALLOWED_HOSTS=http://example.com,https://example.com,localhost
+
+# ALLOWED_HOSTS = ['http://example.com', 'https://example.com', 'localhost']
+# CSRF_TRUSTED_ORIGINS = ['http://example.com', 'https://example.com']
+
+hosts = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+
+# Note, this assumes that the CSRF and ALLOWED hosts are the same!
+ALLOWED_HOSTS = hosts
+CSRF_TRUSTED_ORIGINS = ['http://' + host for host in hosts] + ['https://' + host for host in hosts]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -68,7 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media'
+                'django.template.context_processors.media',
+                'post.context_processors.global_site_data'
             ],
         },
     },
@@ -120,6 +132,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # If you have a 'static' folder at the project level
+    os.path.join(BASE_DIR, 'static-extensions')
+]
+
+# enabling media uploads
+MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -159,9 +179,7 @@ MDEDITOR_CONFIGS = {
     }
 }
 
-# enabling media uploads
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
-MEDIA_URL = '/media/'
+
 
 MARKDOWNIFY = {
     "default": {
