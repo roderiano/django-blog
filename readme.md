@@ -42,25 +42,29 @@ This is a minimalistic blog built using Django Admin for content management and 
     pip install -r requirements.txt
     ```
 
-4. Apply migrations:
+4. Configure environment variables:
+    Copy the `.env-sample` file to a new file called `.env`. Open the `.env` file and replace the values with your own.
+
+
+5. Apply migrations:
 
     ```
     python manage.py migrate
     ```
 
-5. Create a superuser for accessing the Django Admin:
+6. Create a superuser for accessing the Django Admin:
 
     ```
     python manage.py createsuperuser
     ```
 
-6. Run the development server:
+7. Run the development server:
 
     ```
     python manage.py runserver
     ```
 
-7. Open your browser and navigate to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) to log in and start managing your blog content.
+8. Open your browser and navigate to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) to log in and start managing your blog content.
 
 
 ### Running Tests
@@ -70,6 +74,44 @@ To run the tests, use the following command:
 ```
 python manage.py test
 ```
+
+## Customization
+
+This project provides easy customization of the visual style through custom CSS variables at 'static/css/style.css'. Here's how you can personalize the appearance of your blog:
+
+### Customizable CSS Variables
+
+```css
+:root {
+    --custom-primary: #3498db;     /* Replace with your preferred primary color */
+    --custom-secondary: #777777;   /* Replace with your preferred secondary color */
+    --custom-body-color: #fff;      /* Replace with your preferred background color */
+    --custom-main-color: #000000;   /* Replace with your preferred main text color */
+    --custom-navbar-color: #303030; /* Replace with your preferred navigation bar color */
+}
+
+.btn-primary {
+    background-color: var(--custom-primary);
+    border-color: var(--custom-primary);
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: var(--custom-secondary);
+    border-color: var(--custom-secondary);
+    color: #fff;
+}
+
+.navbar {
+    background-color: var(--custom-navbar-color);
+}
+
+body {
+    color: var(--custom-main-color);
+    background-color: var(--custom-body-color);
+}
+```
+Feel free to experiment and tailor these variables to match your desired design aesthetic.
 
 ## Usage
 
