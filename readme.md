@@ -79,7 +79,39 @@ python manage.py test
 
 ## Contributing
 
-Contributions are welcome! Feel free to open issues, create pull requests, or suggest improvements.
+Contributions are welcome! If you have suggestions, bug reports, or want to discuss new features, please open an issue to start a discussion.
+
+For implementing new features or fixing bugs:
+
+1. Fork the repository.
+
+2. Create a new branch from the `develop` branch:
+
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
+
+3. Make your changes and ensure the code follows the project's coding standards.
+
+4. Test your changes thoroughly.
+
+5. Commit your changes:
+
+    ```bash
+    git commit -m "Add your concise and meaningful commit message"
+    ```
+
+6. Push your branch to your fork:
+
+    ```bash
+    git push origin feature/your-feature-name
+    ```
+
+7. Open a pull request against the `develop` branch, describing your changes and referencing the related issue.
+
+8. Your pull request will be reviewed, and once approved, it will be merged.
+
+Thank you for contributing to DevReport!
 
 ## License
 
