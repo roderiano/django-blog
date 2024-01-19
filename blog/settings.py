@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
+import environ
 
-# Blog name
-BLOG_NAME = "Django Blog"
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env(".env")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ie8%(j3w8qyxv993=+l%7ty0e+m62mt^eyxi87e($1lzp+1^qk'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = eval(env('DEBUG'))  
 
 # Set the environment variables
 # You can either set these here or set the environment variables such as:
@@ -35,7 +37,7 @@ DEBUG = False
 # ALLOWED_HOSTS = ['http://example.com', 'https://example.com', 'localhost']
 # CSRF_TRUSTED_ORIGINS = ['http://example.com', 'https://example.com']
 
-hosts = os.environ.get('ALLOWED_HOSTS', 'localhost').split(',')
+hosts = eval(env('ALLOWED_HOSTS')) # .environ.get('ALLOWED_HOSTS', 'localhost').split(',')
 
 # Note, this assumes that the CSRF and ALLOWED hosts are the same!
 ALLOWED_HOSTS = hosts
