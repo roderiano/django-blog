@@ -6,5 +6,4 @@ django-mdeditor==0.1.20
 Markdown==3.5.2
 sqlparse==0.4.4
 tinycss2==1.2.1
-#typing_extensions==4.9.0
-webencodings==0.5.1
+django-environ==0.11.2
