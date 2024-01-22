@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
 
 ### Django ###
+*.Identifier
 *.log
 *.pot
 *.pyc
