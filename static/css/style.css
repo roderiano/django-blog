@@ -1,16 +1,28 @@
-/* static/css/style.css */
-code {
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: rgb(241, 241, 241);
-    border-radius: 3px;
+:root {
+    --custom-primary: #3498db;     
+    --custom-secondary:rgb(119, 119, 119);   
+    --custom-body-color: #fff;
+    --custom-main-color: #000000;
+    --custom-navbar-color: #303030;
 }
 
-.codehilite {
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 10px;
-    background-color: rgb(241, 241, 241);
-    border-radius: 3px;
+.navbar {
+    background-color: var(--custom-navbar-color);
+}
+
+body {
+    color: var(--custom-main-color);
+    background-color: var(--custom-body-color);
+}
+
+.btn-primary {
+    background-color: var(--custom-primary);
+    border-color: var(--custom-primary); 
+    color: #fff; 
+}
+
+.btn-secondary {
+    background-color: var(--custom-secondary);
+    border-color: var(--custom-secondary);
+    color: #fff; 
 }
